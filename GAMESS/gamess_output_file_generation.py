@@ -4,14 +4,11 @@ import shutil
 import matplotlib.pyplot as plt
 import re
 
-import subprocess
-import os
-
 # Define the directory where you want to open the Command Prompt
 directory = r'<current-directory>'
 
 # Define the command to run in the Command Prompt
-command_to_run = 'rungms.bat butane_rotation_000.inp 2023.R1.intel 1 out_fuck'  
+command_to_run = 'rungms.bat butane_rotation_000.inp 2023.R1.intel 1 out_<name>'  
 
 if os.path.exists(directory):
     subprocess.run(f'cmd.exe /K "cd {directory} && {command_to_run}"', shell=True)
@@ -30,7 +27,7 @@ for angle in range(0, 361, 10):
 # Define the directory where the output files are located
 output_dir = r'<outfit-file-directory>'  
 
-# List all files in the directory (assuming they follow the naming pattern out_XXX.out)
+# List all files in the directory (assuming they follow the naming pattern out_<name>.out)
 output_files = [f for f in os.listdir(output_dir) if f.startswith('out_')]
 
 # List to store extracted total energy values
